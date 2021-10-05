@@ -17,7 +17,7 @@ tufte_handout = function(
   fig_width = 4, fig_height = 2.5, fig_crop = TRUE, dev = 'pdf',
   highlight = 'default', ...
 ) {
- tufte_pdf('tufte-handout', fig_width, fig_height, fig_crop, dev, highlight, ...)
+ tufte_pdf('titfl-handout', fig_width, fig_height, fig_crop, dev, highlight, ...)
 }
 
 #' @rdname tufte_handout
@@ -26,11 +26,11 @@ tufte_book = function(
   fig_width = 4, fig_height = 2.5, fig_crop = TRUE, dev = 'pdf',
   highlight = 'default', ...
 ) {
-  tufte_pdf('tufte-book', fig_width, fig_height, fig_crop, dev, highlight, ...)
+  tufte_pdf('titfl-book', fig_width, fig_height, fig_crop, dev, highlight, ...)
 }
 
 tufte_pdf = function(
-  documentclass = c('tufte-handout', 'tufte-book'), fig_width = 4, fig_height = 2.5,
+  documentclass = c('titfl-handout', 'titfl-book'), fig_width = 4, fig_height = 2.5,
   fig_crop = TRUE, dev = 'pdf', highlight = 'default',
   template =  template_resources('tufte_handout', 'tufte-handout.tex'), ...
 ) {
@@ -48,7 +48,7 @@ tufte_pdf = function(
   documentclass = match.arg(documentclass)
   format$pandoc$args = c(
     format$pandoc$args, '--variable', paste0('documentclass:', documentclass),
-    if (documentclass == 'tufte-book')
+    if (documentclass == 'titfl-book')
       if (pandoc2.0()) '--top-level-division=chapter' else '--chapters'
   )
 
